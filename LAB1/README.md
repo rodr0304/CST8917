@@ -12,10 +12,28 @@ The application exposes HTTP-triggered endpoints that analyze text and store the
 
 * Azure Functions
 * Python 3.12
-* Azure Cosmos DB (NoSQL)
+* Azure Cosmos DB for NoSQL
+* Azure Cosmos Python SDK
 * Azure Functions Core Tools
 * Visual Studio Code
 * Azurite Storage Emulator
+
+---
+
+## Application Architecture
+
+```text
+Client
+   |
+   v
+TextAnalyzer Function
+   |
+   v
+Azure Cosmos DB
+   |
+   v
+GetAnalysisHistory Function
+```
 
 ---
 
@@ -57,6 +75,30 @@ Optional limit parameter:
 ```http
 GET /api/GetAnalysisHistory?limit=5
 ```
+
+---
+
+## Cosmos DB Configuration
+
+Database:
+
+```text
+TextAnalyzerDB
+```
+
+Container:
+
+```text
+AnalysisHistory
+```
+
+Partition Key:
+
+```text
+/id
+```
+
+Each text analysis request is automatically stored in Azure Cosmos DB and can later be retrieved using the GetAnalysisHistory endpoint.
 
 ---
 
@@ -121,6 +163,13 @@ The application will be available at:
 http://localhost:7071
 ```
 
+Local endpoints:
+
+```text
+http://localhost:7071/api/TextAnalyzer
+http://localhost:7071/api/GetAnalysisHistory
+```
+
 ---
 
 ## Azure Deployment
@@ -135,6 +184,22 @@ Deploy to Azure:
 
 ```bash
 func azure functionapp publish rg-cst8917-lab1
+```
+
+---
+
+## Production Endpoints
+
+### Text Analyzer
+
+```text
+https://rg-cst8917-lab1-eehkbmg5d6a0audq.canadacentral-01.azurewebsites.net/api/TextAnalyzer
+```
+
+### Analysis History
+
+```text
+https://rg-cst8917-lab1-eehkbmg5d6a0audq.canadacentral-01.azurewebsites.net/api/GetAnalysisHistory
 ```
 
 ---
@@ -182,9 +247,29 @@ Canada Central
     "readingTimeMinutes": 0
   },
   "metadata": {
-    "analyzedAt": "2026-06-09T20:00:00",
+    "analyzedAt": "2026-06-10T00:00:00",
     "textPreview": "Hello World"
   }
+}
+```
+
+---
+
+## Example History Response
+
+```json
+{
+  "count": 1,
+  "results": [
+    {
+      "id": "8e8c8a7f-1234-5678-9999-abcdef123456",
+      "originalText": "Hello World",
+      "analysis": {
+        "wordCount": 2,
+        "characterCount": 11
+      }
+    }
+  ]
 }
 ```
 
@@ -193,7 +278,5 @@ Canada Central
 ## Author
 
 Diniz Rodrigues Martins
-
-Course: CST8917 - Serverless Applications
 
 Algonquin College
