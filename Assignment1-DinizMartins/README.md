@@ -82,3 +82,9 @@ https://learn.microsoft.com/azure/azure-functions/durable/durable-functions-bind
 
 Microsoft Learn. *Fan-out/Fan-in Scenario in Durable Functions*.  
 https://learn.microsoft.com/azure/azure-functions/durable/durable-functions-cloud-backup
+
+---
+
+AI Disclosure Statement
+
+ChatGPT was used to assist with understanding the research paper, organizing ideas, improving writing clarity, and generating draft content. All information was reviewed, verified against the original paper and Microsoft documentation, and edited by the author before submission.
