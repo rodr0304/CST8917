@@ -1,0 +1,14 @@
+{
+"IsEncrypted": false,
+"Values": {
+"AzureWebJobsStorage": "UseDevelopmentStorage=true",
+"FUNCTIONS_WORKER_RUNTIME": "python",
+
+"COSMOS_ENDPOINT": "https://rodr0304-cosmos.documents.azure.com:443/",
+"COSMOS_KEY": "2eBuwiV7phj6SqGppt71TYxLNTRiLhanfQuOVurLjhYCMDTNSzMMFBQ5wxOZk4cTuAhbYbEqmAhgACDbuaEj5g==",
+
+"COSMOS_DATABASE": "TextAnalyzerDB",
+"COSMOS_CONTAINER": "AnalysisHistory"
+
+}
+}
