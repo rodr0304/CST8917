@@ -1,5 +1,8 @@
 # CST8917 - Lab 2: Azure Durable Functions Image Analyzer
 
+Youtube Video: https://youtu.be/xS-IpWubIZw
+-
+
 ## Overview
 
 This project implements an event-driven image processing pipeline using Azure Durable Functions.
