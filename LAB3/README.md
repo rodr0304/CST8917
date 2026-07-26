@@ -4,7 +4,8 @@
 
 ## 🎥 Video Demo
 
-[Watch the demo on YouTube](https://youtu.be/N2hjmwXREZs)
+[![YouTube Demo](https://img.shields.io/badge/Watch-Demo-red?logo=youtube&logoColor=white)](https://youtu.be/N2hjmwXREZs)
+
 
 ## Overview
 
