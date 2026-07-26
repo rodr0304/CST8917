@@ -2,6 +2,10 @@
 
 **Course:** CST8917 – Lab 3: Azure Functions, Logic Apps & Serverless Computing
 
+## 🎥 Video Demo
+
+[Watch the demo on YouTube](https://youtu.be/N2hjmwXREZs)
+
 ## Overview
 
 FleetBook is a serverless vehicle booking evaluation system built using **Azure Functions** and **Azure Logic Apps**.
