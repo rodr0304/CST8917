@@ -270,7 +270,7 @@ container and audit entries in the `processinglog` Table Storage table.
 
 ## Demo Video
 
-YouTube demo:
+YouTube demo: https://youtu.be/xQaZLX7j-sI
 
 
 
