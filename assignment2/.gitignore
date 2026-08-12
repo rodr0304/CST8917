@@ -1,0 +1,24 @@
+# Azure Functions local settings
+local.settings.json
+**/local.settings.json
+
+# Python virtual environments
+.venv/
+**/.venv/
+venv/
+**/venv/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Environment files
+.env
+**/.env
+
+# macOS
+.DS_Store
+
+# Azure local files
+.azure/

@@ -1,0 +1,156 @@
+@baseUrl = http://localhost:7071/api
+
+
+############################################################
+# TEST 1
+# Valid expense under $100
+# EXPECTED: AUTO-APPROVED
+############################################################
+
+POST {{baseUrl}}/expenses/start
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 50,
+  "category": "meals",
+  "description": "Team lunch",
+  "managerEmail": "manager@example.com"
+}
+
+
+############################################################
+# TEST 2
+# Expense >= $100
+# EXPECTED: WAITING FOR MANAGER APPROVAL
+#
+# Copy instanceId from response.
+############################################################
+
+POST {{baseUrl}}/expenses/start
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 250,
+  "category": "equipment",
+  "description": "New monitor",
+  "managerEmail": "manager@example.com"
+}
+
+
+############################################################
+# TEST 2 - MANAGER APPROVES
+#
+# Replace INSTANCE_ID
+############################################################
+
+POST {{baseUrl}}/expenses/INSTANCE_ID/decision
+Content-Type: application/json
+
+{
+  "decision": "approve"
+}
+
+
+############################################################
+# TEST 3
+# Expense >= $100
+# Start this first.
+############################################################
+
+POST {{baseUrl}}/expenses/start
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 500,
+  "category": "software",
+  "description": "Software license",
+  "managerEmail": "manager@example.com"
+}
+
+
+############################################################
+# TEST 3 - MANAGER REJECTS
+#
+# Replace INSTANCE_ID
+############################################################
+
+POST {{baseUrl}}/expenses/INSTANCE_ID/decision
+Content-Type: application/json
+
+{
+  "decision": "reject"
+}
+
+
+############################################################
+# TEST 4
+# Expense >= $100
+# DO NOT SEND MANAGER DECISION
+#
+# Wait approximately 60 seconds.
+# EXPECTED: ESCALATED
+############################################################
+
+POST {{baseUrl}}/expenses/start
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 1000,
+  "category": "travel",
+  "description": "Conference travel",
+  "managerEmail": "manager@example.com"
+}
+
+
+############################################################
+# TEST 5
+# Missing required field: managerEmail
+# EXPECTED: VALIDATION ERROR
+############################################################
+
+POST {{baseUrl}}/expenses/start
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 75,
+  "category": "supplies",
+  "description": "Office supplies"
+}
+
+
+############################################################
+# TEST 6
+# Invalid category
+# EXPECTED: VALIDATION ERROR
+############################################################
+
+POST {{baseUrl}}/expenses/start
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 80,
+  "category": "banana",
+  "description": "Invalid category test",
+  "managerEmail": "manager@example.com"
+}
+
+
+############################################################
+# CHECK STATUS
+#
+# Replace INSTANCE_ID
+############################################################
+
+GET {{baseUrl}}/expenses/INSTANCE_ID/status
