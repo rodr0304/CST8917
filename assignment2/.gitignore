@@ -22,3 +22,11 @@ __pycache__/
 
 # Azure local files
 .azure/
+
+# Azurite local storage
+__azurite*
+__blobstorage__/
+__queuestorage__/
+**/__azurite*
+**/__blobstorage__/
+**/__queuestorage__/
