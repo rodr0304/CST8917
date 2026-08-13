@@ -1,32 +1,22 @@
-# Azure Functions local settings
+# Azure Functions
 local.settings.json
-**/local.settings.json
 
-# Python virtual environments
+# Python
 .venv/
-**/.venv/
 venv/
-**/venv/
-
-# Python cache
 __pycache__/
-**/__pycache__/
 *.pyc
-
-# Environment files
-.env
-**/.env
+*.pyo
+*.pyd
 
 # macOS
 .DS_Store
 
-# Azure local files
+# VS Code
+.vscode/
+
+# Azure
 .azure/
 
-# Azurite local storage
-__azurite*
-__blobstorage__/
-__queuestorage__/
-**/__azurite*
-**/__blobstorage__/
-**/__queuestorage__/
+# Environment
+.env

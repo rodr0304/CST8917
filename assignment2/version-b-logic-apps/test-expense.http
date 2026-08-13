@@ -1,0 +1,96 @@
+@baseUrl = http://localhost:7071/api
+
+############################################################
+# TEST 1 - VALID EXPENSE UNDER $100
+############################################################
+
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 50,
+  "category": "meals",
+  "description": "Team lunch",
+  "managerEmail": "manager@example.com"
+}
+
+############################################################
+# TEST 2 - VALID EXPENSE >= $100
+############################################################
+
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 250,
+  "category": "equipment",
+  "description": "New monitor",
+  "managerEmail": "manager@example.com"
+}
+
+############################################################
+# TEST 3 - VALID EXPENSE >= $100
+############################################################
+
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 500,
+  "category": "software",
+  "description": "Software license",
+  "managerEmail": "manager@example.com"
+}
+
+############################################################
+# TEST 4 - VALID EXPENSE >= $100
+############################################################
+
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 1000,
+  "category": "travel",
+  "description": "Conference travel",
+  "managerEmail": "manager@example.com"
+}
+
+############################################################
+# TEST 5 - MISSING REQUIRED FIELD
+############################################################
+
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 75,
+  "category": "supplies",
+  "description": "Office supplies"
+}
+
+############################################################
+# TEST 6 - INVALID CATEGORY
+############################################################
+
+POST {{baseUrl}}/validate-expense
+Content-Type: application/json
+
+{
+  "employeeName": "Diniz Martins",
+  "employeeEmail": "diniz@example.com",
+  "amount": 80,
+  "category": "banana",
+  "description": "Invalid category test",
+  "managerEmail": "manager@example.com"
+}
